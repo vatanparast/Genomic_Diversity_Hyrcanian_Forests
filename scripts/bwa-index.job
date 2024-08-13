@@ -1,0 +1,20 @@
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -q sThC.q
+#$ -l mres=8G,h_data=8G,h_vmem=8G
+#$ -cwd
+#$ -j y
+#$ -N bwa
+#$ -o bwa.log
+#
+# ----------------Modules------------------------- #
+module load bioinformatics/bwa
+#
+# ----------------Your Commands------------------- #
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+#
+bwa index Quro.1_0.fa -p Quercus_robur
+#
+echo = `date` job $JOB_NAME done

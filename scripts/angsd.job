@@ -1,0 +1,23 @@
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -pe mthread 32
+#$ -q mThM.q
+#$ -l mres=768G,h_data=24G,h_vmem=24G,himem
+#$ -cwd
+#$ -j y
+#$ -N angsd
+#$ -o angsd.log
+#
+# ----------------Modules------------------------- #
+module load bio/angsd/0.937
+#
+# ----------------Your Commands------------------- #
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+echo + NSLOTS = $NSLOTS
+#
+angsd -bam ./bam-sorted.list -doSaf 1 -out acer -anc ./VAHF01.fa -GL 1 -P $NSLOTS -minMapQ 1 -minQ 20
+
+#
+echo = `date` job $JOB_NAME done
