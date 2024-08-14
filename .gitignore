@@ -1,6 +1,5 @@
-# Viw swap files
+# Vim swap files
 *.swp
 
-# Mac crap
 .DS_Store
 
